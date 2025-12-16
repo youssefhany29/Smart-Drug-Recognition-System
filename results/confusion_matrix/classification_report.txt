@@ -1,0 +1,8 @@
+              precision    recall  f1-score   support
+
+ counterfeit     0.9714    0.9444    0.9577        36
+    original     0.9692    0.9844    0.9767        64
+
+    accuracy                         0.9700       100
+   macro avg     0.9703    0.9644    0.9672       100
+weighted avg     0.9700    0.9700    0.9699       100

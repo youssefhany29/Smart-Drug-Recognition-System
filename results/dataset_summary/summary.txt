@@ -1,0 +1,12 @@
+=== Smart Drug Recognition: Dataset Summary ===
+Created at (UTC): 2025-12-16T01:33:37.731373Z
+Seed: 42
+Ratios: train=0.7, validation=0.15, test=0.15
+Allowed exts: .jpg, .jpeg, .png, .webp
+
+RAW counts: original=421, counterfeit=240, total=661
+
+PROCESSED counts:
+  Train      -> original=294, counterfeit=168, total=462
+  Validation -> original=63, counterfeit=36, total=99
+  Test       -> original=64, counterfeit=36, total=100

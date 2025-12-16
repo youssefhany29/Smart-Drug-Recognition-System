@@ -1,0 +1,44 @@
+{
+  "created_at": "2025-12-16T01:33:37.731373Z",
+  "seed": 42,
+  "ratios": {
+    "train": 0.7,
+    "validation": 0.15,
+    "test": 0.15
+  },
+  "extensions": [
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".webp"
+  ],
+  "raw_counts": {
+    "original": 421,
+    "counterfeit": 240,
+    "total": 661
+  },
+  "processed_counts": {
+    "train": {
+      "original": 294,
+      "counterfeit": 168,
+      "total": 462
+    },
+    "validation": {
+      "original": 63,
+      "counterfeit": 36,
+      "total": 99
+    },
+    "test": {
+      "original": 64,
+      "counterfeit": 36,
+      "total": 100
+    }
+  },
+  "skipped_corrupt": null,
+  "paths": {
+    "raw_original": "H:\\UNIVERSITY\\Third year PROJECTS\\Deep Learning\\Smart Drug Recognition\\dataset\\raw\\original",
+    "raw_counterfeit": "H:\\UNIVERSITY\\Third year PROJECTS\\Deep Learning\\Smart Drug Recognition\\dataset\\raw\\counterfeit",
+    "processed": "H:\\UNIVERSITY\\Third year PROJECTS\\Deep Learning\\Smart Drug Recognition\\dataset\\processed"
+  },
+  "note": "Each image is placed in exactly one split to avoid data leakage."
+}

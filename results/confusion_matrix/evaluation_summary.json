@@ -1,0 +1,20 @@
+{
+  "created_at": "2025-12-16T03:41:18.099906Z",
+  "model_path": "H:\\UNIVERSITY\\Third year PROJECTS\\Deep Learning\\Smart Drug Recognition\\models\\smart_drug_model.keras",
+  "test_accuracy": 0.9700000286102295,
+  "test_loss": 0.08327536284923553,
+  "confusion_matrix": [
+    [
+      34,
+      2
+    ],
+    [
+      1,
+      63
+    ]
+  ],
+  "class_names": [
+    "counterfeit",
+    "original"
+  ]
+}
