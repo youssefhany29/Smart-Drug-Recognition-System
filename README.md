@@ -25,7 +25,7 @@ Total images: Approximately 2,467
 Original images: ~1,418
 Counterfeit images: ~1,049
 Image type: RGB images of drug packages
-Dataset sources: Multiple online and manually collected sources
+Dataset sources: https://www.kaggle.com/datasets/surajkumarjha1/fake-vs-real-medicine-datasets-images
 
 Environment Setup
 
