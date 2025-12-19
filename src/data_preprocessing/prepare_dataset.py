@@ -130,11 +130,7 @@ def copy_and_rename(
     prefix: str,
     start_index: int = 1,
 ) -> int:
-    """
-    Copies files into dst_dir with standardized names like:
-    original_000001.jpg  or  counterfeit_000001.png
-    Returns next index after finishing.
-    """
+    
     idx = start_index
     for f in src_files:
         new_name = f"{prefix}_{idx:06d}{f.suffix.lower()}"  
@@ -262,3 +258,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
