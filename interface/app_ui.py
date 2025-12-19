@@ -1,7 +1,6 @@
 import sys
 import os
 
-# Add project root to sys.path (portable)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 if project_root not in sys.path:
@@ -19,7 +18,7 @@ st.set_page_config(page_title="Smart Drug Recognition", page_icon="💊", layout
 st.title("💊 Smart Drug Recognition")
 st.write("Upload a drug package image to classify it as **Original** or **Counterfeit**.")
 
-MODEL_PATH = MODELS_DIR / "smart_drug_model.keras"  # ✅ use .keras
+MODEL_PATH = MODELS_DIR / "smart_drug_model.keras"  
 
 @st.cache_resource
 def load_model():
@@ -29,7 +28,7 @@ def preprocess_image(img: Image.Image):
     img = img.convert("RGB")
     img = img.resize(IMG_SIZE)
     arr = np.array(img, dtype=np.float32)
-    arr = np.expand_dims(arr, axis=0)  # (1, H, W, 3)
+    arr = np.expand_dims(arr, axis=0) 
     return arr
 
 model = load_model()
@@ -41,15 +40,13 @@ if uploaded:
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
     x = preprocess_image(image)
-    prob_original = float(model.predict(x, verbose=0)[0][0])  # sigmoid output
+    prob_original = float(model.predict(x, verbose=0)[0][0]) 
 
-    # Folder order from your dataset: ['counterfeit', 'original']
-    # In binary mode, label 1 corresponds to 'original'
     if prob_original >= 0.5:
-        label = "Original ✅"
+        label = "Original"
         confidence = prob_original
     else:
-        label = "Counterfeit ⚠️"
+        label = "Counterfeit"
         confidence = 1 - prob_original
 
     st.subheader("Prediction")
@@ -57,3 +54,4 @@ if uploaded:
     st.write(f"**Confidence:** {confidence*100:.2f}%")
 
     st.caption("Note: Confidence is based on the sigmoid output. Threshold = 0.5.")
+
