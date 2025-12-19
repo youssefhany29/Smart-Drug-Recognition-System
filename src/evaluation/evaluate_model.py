@@ -44,7 +44,6 @@ def save_confusion_matrix(cm, class_names, out_path: Path):
     plt.xticks(range(len(class_names)), class_names, rotation=20)
     plt.yticks(range(len(class_names)), class_names)
 
-    # write numbers inside cells
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
             plt.text(j, i, str(cm[i, j]), ha="center", va="center")
@@ -55,11 +54,9 @@ def save_confusion_matrix(cm, class_names, out_path: Path):
 
 
 def save_sample_predictions(model, test_ds, class_names, out_dir: Path, max_images=12, threshold=0.5):
-    # Grab one batch
     images, labels = next(iter(test_ds.take(1)))
     preds = model.predict(images, verbose=0).reshape(-1)
 
-    # Convert predictions to class index (0/1)
     pred_labels = (preds >= threshold).astype(int)
 
     # Save a grid image
@@ -70,7 +67,7 @@ def save_sample_predictions(model, test_ds, class_names, out_dir: Path, max_imag
         plt.imshow(images[i].numpy().astype("uint8"))
         true_name = class_names[int(labels[i].numpy())]
         pred_name = class_names[int(pred_labels[i])]
-        conf = preds[i] if pred_labels[i] == 1 else (1 - preds[i])  # confidence for predicted class
+        conf = preds[i] if pred_labels[i] == 1 else (1 - preds[i])  
         plt.title(f"T:{true_name}\nP:{pred_name} ({conf:.2f})", fontsize=9)
         plt.axis("off")
 
@@ -89,7 +86,7 @@ def main():
     model = tf.keras.models.load_model(model_path)
 
     test_ds = load_test_dataset()
-    class_names = test_ds.class_names  # e.g. ['counterfeit', 'original']
+    class_names = test_ds.class_names 
     print("Test class names:", class_names)
 
     # Evaluate (loss + accuracy)
@@ -97,7 +94,6 @@ def main():
     print(f"\nTEST Accuracy: {test_acc:.4f}")
     print(f"TEST Loss: {test_loss:.4f}")
 
-    # Collect predictions for confusion matrix + report
     y_true = []
     y_pred = []
 
@@ -154,3 +150,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
