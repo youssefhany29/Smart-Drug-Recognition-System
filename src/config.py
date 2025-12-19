@@ -1,6 +1,5 @@
 from pathlib import Path
 
-#Project root = folder that contains "src"
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 DATASET_DIR = PROJECT_ROOT / "dataset"
@@ -15,6 +14,6 @@ MODELS_DIR = PROJECT_ROOT / "models"
 RESULTS_DIR = PROJECT_ROOT / "results"
 INTERFACE_DIR = PROJECT_ROOT / "interface"
 
-# Optional: keep image size / random seed in one place later
 IMG_SIZE = (224, 224)
 RANDOM_SEED = 42
+
