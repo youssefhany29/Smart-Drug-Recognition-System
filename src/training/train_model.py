@@ -36,15 +36,14 @@ def build_model(img_size=(224, 224)):
         include_top=False,
         weights="imagenet",
     )
-    base.trainable = False  # freeze feature extractor for first training phase
+    base.trainable = False  
 
     inputs = tf.keras.Input(shape=(img_size[0], img_size[1], 3))
-    # MobileNetV2 expects inputs in [-1, 1], so we use its preprocess function
     x = tf.keras.applications.mobilenet_v2.preprocess_input(inputs)
     x = base(x, training=False)
     x = tf.keras.layers.GlobalAveragePooling2D()(x)
     x = tf.keras.layers.Dropout(0.2)(x)
-    outputs = tf.keras.layers.Dense(1, activation="sigmoid")(x)  # binary classification
+    outputs = tf.keras.layers.Dense(1, activation="sigmoid")(x) 
     model = tf.keras.Model(inputs, outputs)
     return model
 
@@ -96,7 +95,7 @@ def main():
         shuffle=False,
     )
     
-    class_names = train_ds.class_names  # e.g. ['counterfeit', 'original']
+    class_names = train_ds.class_names 
     print("Class names (folder order):", class_names)
     print("Note: For binary label_mode, the second class is label 1.")
 
@@ -138,12 +137,11 @@ def main():
     history = history_obj.history
     
         
-    # --------- Fine-tuning (Phase 2) ---------
+    # --------- Fine-tuning ---------
     base_model = model.get_layer("mobilenetv2_1.00_224")
     print("Base model name:", base_model.name)
     base_model.trainable = True
 
-    # Unfreeze only the last N layers to avoid overfitting
     N = 30
     for layer in base_model.layers[:-N]:
         layer.trainable = False
@@ -161,7 +159,6 @@ def main():
         callbacks=callbacks,
     )
 
-    # Merge histories
     for k, v in fine_history_obj.history.items():
         history[k] = history.get(k, []) + v
 
@@ -196,3 +193,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
